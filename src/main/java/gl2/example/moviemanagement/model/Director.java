@@ -55,5 +55,10 @@ public class Director {
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
   }
-
+  public Set<Movie> getMovies() {
+      return movies;
+  }
+  public void setMovies(Set<Movie> movies) {
+      this.movies = movies;
+}
 }
