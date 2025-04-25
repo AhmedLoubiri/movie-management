@@ -22,6 +22,10 @@ public class Movie {
   @JoinTable(name = "movie_actor", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "actor_id"))
   private Set<Actor> actors;
 
+  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinColumn(name = "director_id")
+  private Director director;
+
   public Movie() {
   }
 
@@ -77,6 +81,14 @@ public class Movie {
 
   public void setActors(Set<Actor> actors) {
     this.actors = actors;
+  }
+
+  public Director getDirector() {
+    return this.director;
+  }
+
+  public void setDirector(Director director) {
+    this.director = director;
   }
 
 }
