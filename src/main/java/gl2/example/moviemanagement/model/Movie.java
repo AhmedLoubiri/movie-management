@@ -2,6 +2,7 @@ package gl2.example.moviemanagement.model;
 
 import jakarta.persistence.*;
 import java.util.*;
+
 @Entity
 public class Movie {
   @Id
@@ -12,13 +13,15 @@ public class Movie {
 
   @Column(name = "image_url")
   private String imageUrl;
+
   @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JoinTable(
-          name = "movie_genre",
-          joinColumns = @JoinColumn(name = "movie_id"),
-          inverseJoinColumns = @JoinColumn(name = "genre_id")
-  )
+  @JoinTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
   private Set<Genre> genres;
+
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinTable(name = "movie_actor", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "actor_id"))
+  private Set<Actor> actors;
+
   public Movie() {
   }
 
@@ -59,11 +62,21 @@ public class Movie {
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
   }
+
   public Set<Genre> getGenres() {
     return genres;
   }
+
   public void setGenres(Set<Genre> genres) {
     this.genres = genres;
+  }
+
+  public Set<Actor> getActors() {
+    return this.actors;
+  }
+
+  public void setActors(Set<Actor> actors) {
+    this.actors = actors;
   }
 
 }
