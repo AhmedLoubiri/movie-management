@@ -1,6 +1,7 @@
 package gl2.example.moviemanagement.model;
 
 import jakarta.persistence.*;
+import java.util.*;
 
 @Entity
 public class Actor {
@@ -12,6 +13,9 @@ public class Actor {
 
     @Column(name = "image_url")
     private String imageUrl;
+
+    @ManyToMany(mappedBy = "actors")
+    private Set<Movie> movies;
 
     public Actor() {}
     public Actor(String name, Integer age, String imageUrl) {
