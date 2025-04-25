@@ -1,6 +1,7 @@
 package gl2.example.moviemanagement.model;
 
 import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Genre {
@@ -8,6 +9,9 @@ public class Genre {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
+
+  @ManyToMany(mappedBy = "genres")
+  private Set<Movie> movies;
 
   public Genre() {
   }
@@ -30,6 +34,14 @@ public class Genre {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public Set<Movie> getMovies() {
+    return movies;
+  }
+
+  public void setMovies(Set<Movie> movies) {
+    this.movies = movies;
   }
 
 }
