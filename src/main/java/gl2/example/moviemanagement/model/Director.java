@@ -1,6 +1,7 @@
 package gl2.example.moviemanagement.model;
 
 import jakarta.persistence.*;
+import java.util.*;
 
 @Entity
 public class Director {
@@ -12,7 +13,8 @@ public class Director {
 
   @Column(name = "image_url")
   private String imageUrl;
-
+  @OneToMany(mappedBy = "director")
+  private Set<Movie> movies;
   public Director() {
   }
 
