@@ -37,7 +37,7 @@ public class Genre {
   }
 
   public Set<Movie> getMovies() {
-    return movies;
+    return this.movies;
   }
 
   public void setMovies(Set<Movie> movies) {
