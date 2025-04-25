@@ -1,56 +1,58 @@
 package gl2.example.moviemanagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String genre;
-    private String realisateur;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  private String title;
+  private Integer year;
 
-    public Movie() {}
+  @Column(name = "image_url")
+  private String imageUrl;
 
-    public Movie(String name, String position, String salary) {
-        this.name = name;
-        this.genre = position;
-        this.realisateur = salary;
-    }
+  public Movie() {
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public Movie(String name, String title, Integer year, String imageUrl) {
+    this.title = name;
+    this.title = title;
+    this.year = year;
+    this.imageUrl = imageUrl;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public String getGenre() {
-        return genre;
-    }
+  public void setTitle(String name) {
+    this.title = name;
+  }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
+  public Integer getYear() {
+    return year;
+  }
 
-    public String getRealisateur() {
-        return realisateur;
-    }
+  public void setYear(Integer year) {
+    this.year = year;
+  }
 
-    public void setRealisateur(String realisateur) {
-        this.realisateur = realisateur;
-    }
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
 }
