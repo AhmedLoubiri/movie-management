@@ -11,14 +11,22 @@ import java.util.Optional;
 @Service
 public class DirectorService {
 
-    @Autowired
-    private DirectorRepository DirectorRepository;
+  @Autowired
+  private DirectorRepository DirectorRepository;
 
-    public List<Director> getAllDirectors() { return DirectorRepository.findAll(); }
+  public List<Director> getAllDirectors() {
+    return DirectorRepository.findAll();
+  }
 
-    public Optional<Director> getGenreById(Long id){ return DirectorRepository.findById(id); }
+  public Optional<Director> getDirectorById(Long id) {
+    return DirectorRepository.findById(id);
+  }
 
-    public Director addDirector(Director Director){ return DirectorRepository.save(Director); }
+  public Director addDirector(Director Director) {
+    return DirectorRepository.save(Director);
+  }
 
-    public void deleteDirector(Long id){ DirectorRepository.deleteById(id); }
+  public void deleteDirector(Long id) {
+    DirectorRepository.deleteById(id);
+  }
 }

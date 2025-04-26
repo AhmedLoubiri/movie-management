@@ -1,20 +1,27 @@
 package gl2.example.moviemanagement.model;
 
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.*;
+
 import jakarta.persistence.*;
-import java.util.*;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Director {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
   private String name;
   private Integer age;
 
   @Column(name = "image_url")
   private String imageUrl;
+
   @OneToMany(mappedBy = "director")
   private Set<Movie> movies;
+
   public Director() {
   }
 
@@ -55,10 +62,12 @@ public class Director {
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
   }
+
   public Set<Movie> getMovies() {
-      return movies;
+    return movies;
   }
+
   public void setMovies(Set<Movie> movies) {
-      this.movies = movies;
-}
+    this.movies = movies;
+  }
 }
