@@ -20,6 +20,7 @@ public class Director {
   private String imageUrl;
 
   @OneToMany(mappedBy = "director")
+  @JsonManagedReference
   private Set<Movie> movies;
 
   public Director() {

@@ -20,6 +20,7 @@ public class Movie {
 
   @ManyToMany()
   @JoinTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+  @JsonBackReference
   private Set<Genre> genres;
 
   @ManyToMany()
@@ -28,6 +29,7 @@ public class Movie {
 
   @ManyToOne()
   @JoinColumn(name = "director_id", insertable = false, updatable = false)
+  @JsonBackReference
   private Director director;
 
   public Movie() {

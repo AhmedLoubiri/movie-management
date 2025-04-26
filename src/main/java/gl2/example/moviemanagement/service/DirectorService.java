@@ -29,4 +29,7 @@ public class DirectorService {
   public void deleteDirector(Long id) {
     DirectorRepository.deleteById(id);
   }
+
+  // TODO getDirectorByMovieId()
+  //
 }
