@@ -16,7 +16,7 @@ public class MovieService {
 
     public List<Movie> getAllMovies() { return movieRepository.findAll(); }
 
-    public Optional<Movie> getEmployeeById(Long id){ return movieRepository.findById(id); }
+    public Optional<Movie> getMovieById(Long id){ return movieRepository.findById(id); }
 
     public Movie addMovie(Movie movie){ return movieRepository.save(movie); }
 

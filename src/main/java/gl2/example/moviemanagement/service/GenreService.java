@@ -16,7 +16,7 @@ public class GenreService {
 
     public List<Genre> getAllGenres() { return GenreRepository.findAll(); }
 
-    public Optional<Genre> getEmployeeById(Long id){ return GenreRepository.findById(id); }
+    public Optional<Genre> getGenreById(Long id){ return GenreRepository.findById(id); }
 
     public Genre addGenre(Genre Genre){ return GenreRepository.save(Genre); }
 

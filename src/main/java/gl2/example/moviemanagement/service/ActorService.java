@@ -16,7 +16,7 @@ public class ActorService {
 
     public List<Actor> getAllActors() { return ActorRepository.findAll(); }
 
-    public Optional<Actor> getEmployeeById(Long id){ return ActorRepository.findById(id); }
+    public Optional<Actor> getGenreById(Long id){ return ActorRepository.findById(id); }
 
     public Actor addActor(Actor Actor){ return ActorRepository.save(Actor); }
 

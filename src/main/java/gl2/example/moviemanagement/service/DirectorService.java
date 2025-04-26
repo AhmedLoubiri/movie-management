@@ -16,7 +16,7 @@ public class DirectorService {
 
     public List<Director> getAllDirectors() { return DirectorRepository.findAll(); }
 
-    public Optional<Director> getEmployeeById(Long id){ return DirectorRepository.findById(id); }
+    public Optional<Director> getGenreById(Long id){ return DirectorRepository.findById(id); }
 
     public Director addDirector(Director Director){ return DirectorRepository.save(Director); }
 
