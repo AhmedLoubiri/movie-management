@@ -43,6 +43,12 @@ h1 {
     margin: 0;
 }
 
+.movie-item img {
+    max-width: 100px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
 .button {
     display: inline-block;
     font-size: 16px;

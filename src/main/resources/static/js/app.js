@@ -10,7 +10,11 @@ async function fetchMovies() {
         li.className = 'movie-item';
         li.innerHTML = `
             <h2>${movie.title}</h2>
-            <p>${movie.description}</p>
+            <img src="${movie.image_url}" alt="${movie.title}" style="max-width: 100px; display: block;">
+            <p><strong>Year:</strong> ${movie.year}</p>
+            <p><strong>Director ID:</strong> ${movie.director_id}</p>
+            <p><strong>Genres:</strong> ${movie.genres.join(', ')}</p>
+            <p><strong>Actors:</strong> ${movie.actors.join(', ')}</p>
             <button class="button" onclick="deleteMovie(${movie.id})">Delete</button>
         `;
         movieList.appendChild(li);
@@ -21,12 +25,16 @@ async function fetchMovies() {
 async function addMovie(event) {
     event.preventDefault();
     const title = document.getElementById('movie-title').value;
-    const description = document.getElementById('movie-description').value;
+    const image_url = document.getElementById('movie-image-url').value;
+    const year = parseInt(document.getElementById('movie-year').value);
+    const director_id = parseInt(document.getElementById('movie-director-id').value);
+    const genres = document.getElementById('movie-genres').value.split(',').map(genre => genre.trim());
+    const actors = document.getElementById('movie-actors').value.split(',').map(actor => actor.trim());
 
     await fetch('/api/movies', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, description })
+        body: JSON.stringify({ title, image_url, year, director_id, genres, actors })
     });
 
     document.getElementById('movie-form').reset();
