@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>Movie Management</h1>
+</header>
+<div class="container">
+    <h2>Movie List</h2>
+    <ul class="movie-list" id="movie-list">
+        <!-- Movies will be dynamically loaded here -->
+    </ul>
+    <h2>Add a New Movie</h2>
+    <form id="movie-form">
+        <input type="text" id="movie-title" placeholder="Movie Title" required>
+        <textarea id="movie-description" placeholder="Movie Description" required></textarea>
+        <button type="submit" class="button">Add Movie</button>
+    </form>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
