@@ -1,5 +1,7 @@
 package gl2.example.moviemanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ public class Genre {
   private String name;
 
   @ManyToMany(mappedBy = "genres")
+  @JsonBackReference
   private Set<Movie> movies;
 
   public Genre() {
