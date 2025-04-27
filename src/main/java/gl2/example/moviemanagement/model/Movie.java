@@ -20,7 +20,6 @@ public class Movie {
 
   @ManyToMany()
   @JoinTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
-  @JsonBackReference
   private Set<Genre> genres;
 
   @ManyToMany()
