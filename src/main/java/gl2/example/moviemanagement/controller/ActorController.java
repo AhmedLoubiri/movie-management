@@ -42,7 +42,7 @@ public class ActorController {
   }
 
   @GetMapping("/getMoviesByActorId/{actorId}")
-  public Set<Movie> getMoviesByActorId(@PathVariable Long actorId) {
+  public Optional<Set<Movie>> getMoviesByActorId(@PathVariable Long actorId) {
     return actorService.getMoviesByActorId(actorId);
   }
 }

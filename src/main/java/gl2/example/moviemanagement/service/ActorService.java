@@ -35,9 +35,8 @@ public class ActorService {
     ActorRepository.deleteById(id);
   }
 
-  public Set<Movie> getMoviesByActorId(Long actorId) {
+  public Optional<Set<Movie>> getMoviesByActorId(Long actorId) {
     return actorRepository.findById(actorId)
-        .map(Actor::getMovies)
-        .orElse(null);
+        .map(Actor::getMovies);
   }
 }
