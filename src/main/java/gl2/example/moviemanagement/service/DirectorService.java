@@ -1,7 +1,10 @@
 package gl2.example.moviemanagement.service;
 
 import gl2.example.moviemanagement.model.Director;
+import gl2.example.moviemanagement.model.Movie;
 import gl2.example.moviemanagement.repository.DirectorRepository;
+import gl2.example.moviemanagement.repository.MovieRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,9 @@ public class DirectorService {
 
   @Autowired
   private DirectorRepository DirectorRepository;
+
+  @Autowired
+  private MovieRepository movieRepository;
 
   public List<Director> getAllDirectors() {
     return DirectorRepository.findAll();
@@ -30,6 +36,8 @@ public class DirectorService {
     DirectorRepository.deleteById(id);
   }
 
-  // TODO getDirectorByMovieId()
-  //
+  public Optional<Director> getDirectorByMovieId(Long movieId) {
+    return movieRepository.findById(movieId)
+        .map(Movie::getDirector);
+  }
 }
