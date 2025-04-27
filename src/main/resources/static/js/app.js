@@ -48,47 +48,30 @@ async function addMovie(event) {
 
   console.log(
     JSON.stringify({
-      genres: genres.map((id) => {
-        ({ id });
-      }),
-    }),
-  );
-
-  console.log(
-    JSON.stringify({
       title,
       imageUrl,
       year,
       director: { id: director_id },
-      genres: genres.map((id) => {
-        ({ id });
-      }),
-      actors: actors.map((id) => {
-        ({ id });
-      }),
+      genres: genres.map((id) => ({ id })),
+      actors: actors.map((id) => ({ id })),
     }),
   );
 
-  /*
   await fetch("/api/movies", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       title,
-      image_url: imageUrl,
+      imageUrl,
       year,
-      director_id,
-      genres: document
-        .getElementById("movie-genres")
-        .value.split(",")
-        .map((genre) => genre.trim()),
-      actors,
+      director: { id: director_id },
+      genres: genres.map((id) => ({ id })),
+      actors: actors.map((id) => ({ id })),
     }),
   });
 
   document.getElementById("movie-form").reset();
   fetchMovies();
-  */
 }
 
 // Delete a movie
