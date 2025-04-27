@@ -19,17 +19,14 @@ public class Movie {
 
   @ManyToMany()
   @JoinTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
-  @JsonManagedReference
   private Set<Genre> genres;
 
   @ManyToMany()
   @JoinTable(name = "movie_actor", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "actor_id"))
-  @JsonManagedReference
   private Set<Actor> actors;
 
   @ManyToOne()
-  @JoinColumn(name = "director_id", insertable = false, updatable = false)
-  @JsonManagedReference
+  @JoinColumn(name = "director_id")
   private Director director;
 
   public Movie() {

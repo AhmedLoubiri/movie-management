@@ -19,7 +19,7 @@ public class Director {
   private String imageUrl;
 
   @OneToMany(mappedBy = "director")
-  @JsonBackReference
+  @JsonIgnore
   private Set<Movie> movies;
 
   public Director() {

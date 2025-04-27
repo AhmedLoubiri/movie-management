@@ -3,6 +3,7 @@ package gl2.example.moviemanagement.controller;
 import gl2.example.moviemanagement.model.Movie;
 import gl2.example.moviemanagement.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
@@ -29,8 +30,9 @@ public class MovieController {
   }
 
   @PostMapping
-  public Movie addMovie(@RequestBody Movie movie) {
-    return movieService.addMovie(movie);
+  public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
+    movieService.saveMovie(movie);
+    return new ResponseEntity<>(HttpStatus.CREATED);
   }
 
   @DeleteMapping("/{id}")

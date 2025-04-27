@@ -3,7 +3,7 @@ package gl2.example.moviemanagement.model;
 import jakarta.persistence.*;
 import java.util.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Actor {
@@ -17,7 +17,7 @@ public class Actor {
   private String imageUrl;
 
   @ManyToMany(mappedBy = "actors")
-  @JsonBackReference
+  @JsonIgnore
   private Set<Movie> movies;
 
   public Actor() {
