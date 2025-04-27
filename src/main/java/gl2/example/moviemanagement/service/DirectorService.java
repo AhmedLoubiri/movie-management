@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class DirectorService {
@@ -39,5 +40,10 @@ public class DirectorService {
   public Optional<Director> getDirectorByMovieId(Long movieId) {
     return movieRepository.findById(movieId)
         .map(Movie::getDirector);
+  }
+
+  public Optional<Set<Movie>> getMoviesByDirectorId(Long directorId) {
+    return DirectorRepository.findById(directorId)
+        .map(Director::getMovies);
   }
 }

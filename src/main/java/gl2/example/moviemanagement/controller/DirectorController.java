@@ -1,6 +1,7 @@
 package gl2.example.moviemanagement.controller;
 
 import java.util.List;
+import java.util.Set;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import gl2.example.moviemanagement.model.Director;
+import gl2.example.moviemanagement.model.Movie;
 import gl2.example.moviemanagement.service.DirectorService;
 
 @RestController
@@ -47,4 +49,8 @@ public class DirectorController {
     return directorService.getDirectorByMovieId(movieId);
   }
 
+  @GetMapping("/getMoviesByDirectorId/{directorId}")
+  public Optional<Set<Movie>> getMoviesByDirectorId(@PathVariable Long directorId) {
+    return directorService.getMoviesByDirectorId(directorId);
+  }
 }

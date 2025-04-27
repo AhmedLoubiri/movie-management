@@ -6,7 +6,6 @@ import java.util.*;
 import com.fasterxml.jackson.annotation.*;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Movie {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +29,7 @@ public class Movie {
 
   @ManyToOne()
   @JoinColumn(name = "director_id", insertable = false, updatable = false)
-  @JsonBackReference
+  @JsonManagedReference
   private Director director;
 
   public Movie() {

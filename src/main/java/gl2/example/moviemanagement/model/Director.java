@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Director {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +19,7 @@ public class Director {
   private String imageUrl;
 
   @OneToMany(mappedBy = "director")
-  @JsonManagedReference
+  @JsonBackReference
   private Set<Movie> movies;
 
   public Director() {
