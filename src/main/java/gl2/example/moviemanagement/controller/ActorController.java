@@ -2,13 +2,9 @@ package gl2.example.moviemanagement.controller;
 
 import gl2.example.moviemanagement.model.Actor;
 import gl2.example.moviemanagement.model.Movie;
-import gl2.example.moviemanagement.repository.ActorRepository;
 import gl2.example.moviemanagement.service.ActorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +12,12 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@RequestMapping({ "/api/actors", "/api/actors/" })
+@RequestMapping("/api/actors/")
 public class ActorController {
   @Autowired
   private ActorService actorService;
 
-  @GetMapping({ "", "/" })
+  @GetMapping("")
   public List<Actor> getAllActors() {
     return actorService.getAllActors();
   }

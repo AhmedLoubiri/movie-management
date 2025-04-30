@@ -18,13 +18,13 @@ import gl2.example.moviemanagement.model.Movie;
 import gl2.example.moviemanagement.service.DirectorService;
 
 @RestController
-@RequestMapping({ "/api/directors", "/api/directors/" })
+@RequestMapping("/api/directors/")
 
 public class DirectorController {
   @Autowired
   private DirectorService directorService;
 
-  @GetMapping({ "", "/" })
+  @GetMapping("")
   public List<Director> getAllDirectors() {
     return directorService.getAllDirectors();
   }

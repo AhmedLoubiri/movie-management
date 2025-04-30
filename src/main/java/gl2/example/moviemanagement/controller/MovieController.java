@@ -46,15 +46,13 @@ public class MovieController {
       @PathVariable Long id,
       @RequestBody Movie movie) {
 
-    // Optionnel : vérifier si l'employé avec l'ID donné existe
     Optional<Movie> existingMovie = movieService.getMovieById(id);
     if (existingMovie.isEmpty()) {
       return ResponseEntity.notFound().build();
     }
 
-    // Mettre à jour l'employé avec les nouvelles informations
-    movie.setId(id); // S'assurer que l'ID de l'objet est le même que celui dans l'URL
-    Movie updatedEmployee = movieService.addMovie(movie);
+    movie.setId(id);
+    Movie updatedEmployee = movieService.saveMovie(movie);
 
     return ResponseEntity.ok(updatedEmployee);
   }
