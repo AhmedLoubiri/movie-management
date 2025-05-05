@@ -5,6 +5,12 @@ aliases:
 tags: []
 ---
 
+<style>
+pre {
+  page-break-inside: avoid;
+}
+</style>
+
 <h1 align="center" style="color: red"> Compte Rendu: Movies management system </h1>
 
 <h3 align=center>Work by Ahmed Loubiri GL 2/2 et Louay Dardouri GL 2/3</h2>
@@ -12,7 +18,11 @@ tags: []
 
 ## Database (MySQL)
 
-![apprepschema.png](assets/imgs/apprepschema.png)
+#### Schema
+
+![apprepschema.png](../../assets/imgs/apprepschema.png)
+
+#### Relations
 
 | Relation | Type | Description |
 | ------------- | -------------- | -------------- |
@@ -71,6 +81,8 @@ tags: []
 
 We have included **`Swagger UI`** to facilitate API testing and to provide clear, interactive documentation for better understanding and validation of the endpoints
 
+![swaggerUI.png](assets/imgs/swaggerUI.png)
+
 It is integrated by adding the `springdoc-openapi-ui` dependency in the project's build configuration and accessing the documentation at `/swagger-ui/index.html`
 
 *pom.xml*
@@ -82,7 +94,7 @@ It is integrated by adding the `springdoc-openapi-ui` dependency in the project'
 </dependency>
 ```
 
-For further simplification, we added a redirect to the Swagger UI, allowing users to access it directly from `/api/test`
+For further simplification, we added a redirect to the Swagger UI, allowing users to access it directly from `/` or `/api/test`.
 To do so we added a home controller.
 
 *HomeController.java*
@@ -101,3 +113,5 @@ public class HomeController {
   }
 }
 ```
+
+Now we can access the Swagger UI page to simply test the api via `/` or `/api/test`.
