@@ -1,5 +1,6 @@
 package gl2.example.moviemanagement.service;
 
+import gl2.example.moviemanagement.model.Director;
 import gl2.example.moviemanagement.model.Genre;
 import gl2.example.moviemanagement.model.Movie;
 import gl2.example.moviemanagement.repository.GenreRepository;
@@ -26,5 +27,8 @@ public class GenreService {
     public Optional<Set<Movie>> getMoviesByGenreId(Long genreId) {
         return GenreRepository.findById(genreId)
                 .map(Genre::getMovies);
+    }
+    public List<Genre> searchGenresByNameContainingIgnoreCase(String name) {
+        return GenreRepository.findByNameContainingIgnoreCase(name);
     }
 }

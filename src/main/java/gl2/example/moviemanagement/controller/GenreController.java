@@ -4,15 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import gl2.example.moviemanagement.model.Director;
 import gl2.example.moviemanagement.model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import gl2.example.moviemanagement.model.Genre;
 import gl2.example.moviemanagement.service.GenreService;
@@ -47,5 +43,15 @@ public class GenreController {
   @GetMapping("/getMoviesByGenreId/{genreId}")
   public Optional<Set<Movie>> getDirectorByMovieId(@PathVariable Long genreId) {
     return genreService.getMoviesByGenreId(genreId);
+  }
+
+  @GetMapping("/search")
+  public ResponseEntity<List<Genre>> searchGenres(@RequestParam String name) {
+    System.out.println("Searching for genres with title: " + name);
+    List<Genre> genres = genreService.searchGenresByNameContainingIgnoreCase(name);
+    if (genres.isEmpty()) {
+      return ResponseEntity.notFound().build();
+    }
+    return ResponseEntity.ok(genres);
   }
 }
