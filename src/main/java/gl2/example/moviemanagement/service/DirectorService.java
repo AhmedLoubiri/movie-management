@@ -46,4 +46,8 @@ public class DirectorService {
     return DirectorRepository.findById(directorId)
         .map(Director::getMovies);
   }
+
+  public List<Director> searchDirectorsByNameContainingIgnoreCase(String name) {
+    return DirectorRepository.findByNameContainingIgnoreCase(name);
+  }
 }

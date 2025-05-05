@@ -5,13 +5,8 @@ import java.util.Set;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import gl2.example.moviemanagement.model.Director;
 import gl2.example.moviemanagement.model.Movie;
@@ -52,5 +47,15 @@ public class DirectorController {
   @GetMapping("/getMoviesByDirectorId/{directorId}")
   public Optional<Set<Movie>> getMoviesByDirectorId(@PathVariable Long directorId) {
     return directorService.getMoviesByDirectorId(directorId);
+  }
+
+  @GetMapping("/search")
+  public ResponseEntity<List<Director>> searchDirectors(@RequestParam String name) {
+    System.out.println("Searching for directors with title: " + name);
+    List<Director> directors = directorService.searchDirectorsByNameContainingIgnoreCase(name);
+    if (directors.isEmpty()) {
+      return ResponseEntity.notFound().build();
+    }
+    return ResponseEntity.ok(directors);
   }
 }
