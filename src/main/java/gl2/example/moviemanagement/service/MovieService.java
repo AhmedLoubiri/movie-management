@@ -73,4 +73,8 @@ public class MovieService {
     Director director = directorRepository.findById(directorId).get();
     return movieRepository.save(movie);
   }
+
+  public List<Movie> searchMoviesByTitleContainingIgnoreCase(String title) {
+    return movieRepository.findByTitleContainingIgnoreCase(title);
+  }
 }

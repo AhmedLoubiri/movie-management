@@ -3,8 +3,6 @@ package gl2.example.moviemanagement.model;
 import jakarta.persistence.*;
 import java.util.*;
 
-import com.fasterxml.jackson.annotation.*;
-
 @Entity
 public class Movie {
   @Id

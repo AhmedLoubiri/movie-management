@@ -56,4 +56,14 @@ public class MovieController {
 
     return ResponseEntity.ok(updatedEmployee);
   }
+
+  @GetMapping("/search")
+  public ResponseEntity<List<Movie>> searchMovies(@RequestParam String title) {
+    System.out.println("Searching for movies with title: " + title);
+    List<Movie> movies = movieService.searchMoviesByTitleContainingIgnoreCase(title);
+    if (movies.isEmpty()) {
+      return ResponseEntity.notFound().build();
+    }
+    return ResponseEntity.ok(movies);
+  }
 }
