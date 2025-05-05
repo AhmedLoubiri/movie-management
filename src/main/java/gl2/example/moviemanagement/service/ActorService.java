@@ -1,6 +1,7 @@
 package gl2.example.moviemanagement.service;
 
 import gl2.example.moviemanagement.model.Actor;
+import gl2.example.moviemanagement.model.Director;
 import gl2.example.moviemanagement.model.Movie;
 import gl2.example.moviemanagement.repository.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,9 @@ public class ActorService {
   public Optional<Set<Movie>> getMoviesByActorId(Long actorId) {
     return actorRepository.findById(actorId)
         .map(Actor::getMovies);
+  }
+
+  public List<Actor> searchActorsByNameContainingIgnoreCase(String name) {
+    return actorRepository.findByNameContainingIgnoreCase(name);
   }
 }
