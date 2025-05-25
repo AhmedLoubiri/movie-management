@@ -6,7 +6,7 @@ tags: []
 ---
 
 <style>
-pre {
+pre, code {
   page-break-inside: avoid;
 }
 </style>
@@ -15,6 +15,9 @@ pre {
 
 <h3 align=center>Work by Ahmed Loubiri GL 2/2 et Louay Dardouri GL 2/3</h2>
 
+## Introdution
+
+This Spring Boot project is a Movie Management System designed to provide **CRUD** operations for managing movies, including features for adding, searching, updating, and deleting movie records through a **REST API**.
 
 ## Database (MySQL)
 
@@ -30,6 +33,11 @@ pre {
 | `movie_actor` | ManyToMany | Each movie has many actors and vice versa. |
 | `movie_genre` | ManyToMany | Each movie has many genres and vice versa. |
 
+
+<br>
+<br>
+<br>
+<br>
 
 ## Endpoints
 
@@ -77,7 +85,7 @@ pre {
 | **PUT**    | `/api/genres/{id}` | Update a genre by id |
 
 
-## Testing
+## Testing (Swagger UI)
 
 We have included **`Swagger UI`** to facilitate API testing and to provide clear, interactive documentation for better understanding and validation of the endpoints
 

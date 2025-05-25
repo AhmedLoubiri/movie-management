@@ -1,7 +1,6 @@
 package gl2.example.moviemanagement.controller;
 
 import gl2.example.moviemanagement.model.Actor;
-import gl2.example.moviemanagement.model.Director;
 import gl2.example.moviemanagement.model.Movie;
 import gl2.example.moviemanagement.service.ActorService;
 
@@ -52,5 +51,12 @@ public class ActorController {
       return ResponseEntity.notFound().build();
     }
     return ResponseEntity.ok(actors);
+  }
+
+  @PutMapping("/{id}")
+  public Actor updateActor(
+      @PathVariable Long id,
+      @RequestBody Actor actor) {
+    return actorService.updateActor(id, actor);
   }
 }

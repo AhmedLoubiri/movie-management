@@ -13,22 +13,44 @@ import java.util.Optional;
 @Service
 public class GenreService {
 
-    @Autowired
-    private GenreRepository GenreRepository;
+  @Autowired
+  private GenreRepository GenreRepository;
 
-    public List<Genre> getAllGenres() { return GenreRepository.findAll(); }
+  public List<Genre> getAllGenres() {
+    return GenreRepository.findAll();
+  }
 
-    public Optional<Genre> getGenreById(Long id){ return GenreRepository.findById(id); }
+  public Optional<Genre> getGenreById(Long id) {
+    return GenreRepository.findById(id);
+  }
 
-    public Genre addGenre(Genre Genre){ return GenreRepository.save(Genre); }
+  public Genre addGenre(Genre Genre) {
+    return GenreRepository.save(Genre);
+  }
 
-    public void deleteGenre(Long id){ GenreRepository.deleteById(id); }
+  public void deleteGenre(Long id) {
+    GenreRepository.deleteById(id);
+  }
 
-    public Optional<Set<Movie>> getMoviesByGenreId(Long genreId) {
-        return GenreRepository.findById(genreId)
-                .map(Genre::getMovies);
-    }
-    public List<Genre> searchGenresByNameContainingIgnoreCase(String name) {
-        return GenreRepository.findByNameContainingIgnoreCase(name);
-    }
+  public Optional<Set<Movie>> getMoviesByGenreId(Long genreId) {
+    return GenreRepository.findById(genreId)
+        .map(Genre::getMovies);
+  }
+
+  public List<Genre> searchGenresByNameContainingIgnoreCase(String name) {
+    return GenreRepository.findByNameContainingIgnoreCase(name);
+  }
+
+  public Genre updateGenre(Long id, Genre genre) {
+    return GenreRepository.findById(id)
+        .map(existingGenre -> {
+          existingGenre.setName(genre.getName());
+          existingGenre.setMovies(genre.getMovies());
+          return GenreRepository.save(existingGenre);
+        })
+        .orElseGet(() -> {
+          genre.setId(id);
+          return GenreRepository.save(genre);
+        });
+  }
 }

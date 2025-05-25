@@ -29,6 +29,19 @@ public class DirectorService {
     return DirectorRepository.findById(id);
   }
 
+  public Director updateDirector(Long id, Director Director) {
+    return DirectorRepository.findById(id)
+        .map(existingDirector -> {
+          existingDirector.setName(Director.getName());
+          existingDirector.setMovies(Director.getMovies());
+          return DirectorRepository.save(existingDirector);
+        })
+        .orElseGet(() -> {
+          Director.setId(id);
+          return DirectorRepository.save(Director);
+        });
+  }
+
   public Director addDirector(Director Director) {
     return DirectorRepository.save(Director);
   }

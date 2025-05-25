@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import gl2.example.moviemanagement.model.Director;
 import gl2.example.moviemanagement.model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +32,13 @@ public class GenreController {
   @PostMapping
   public Genre addGenre(@RequestBody Genre genre) {
     return genreService.addGenre(genre);
+  }
+
+  @PutMapping("/{id}")
+  public Genre updateGenre(
+      @PathVariable Long id,
+      @RequestBody Genre genre) {
+    return genreService.updateGenre(id, genre);
   }
 
   @DeleteMapping("/{id}")
